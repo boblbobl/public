@@ -42,7 +42,8 @@ $table.Columns.Add($col2)
 # Use remote sitemap file
 $sitemap = [xml](Get-WebPage -url $file)  
 # Parse in nodes
-$nodelist = $siteMap.SelectNodes("/urlset/url")
+$nodelist = $sitemap.urlset.url
+
 # Counter for pages
 $i = 0
 foreach ($node in $nodelist) {
