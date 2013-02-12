@@ -10,7 +10,7 @@ GROUP="groupname"
 
 # Add www-data user to group
 usermod -G ${GROUP} www-data 
-# Added to group that allows scp (/ets/sshd_config)
+# Adding user to scpt transfer group (verify /ets/ssh/sshd_config - Match group filetransfer)
 usermod -G filetransfer ${OWNER}
 
 # Set directory to change
