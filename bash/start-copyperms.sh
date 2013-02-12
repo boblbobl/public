@@ -10,6 +10,8 @@ GROUP="groupname"
 
 # Add www-data user to group
 usermod -G ${GROUP} www-data 
+# Added to group that allows scp (/ets/sshd_config)
+usermod -G filetransfer ${OWNER}
 
 # Set directory to change
 DIR="/dir1/dir2/"
@@ -21,7 +23,7 @@ do
 	chown ${OWNER}:${GROUP} ${F}
 	# Get file access rights
 	PERMS=$(stat -c%a ${F})	
-	# Apple owner => group file access rights
+	# Apply owner => group file access rights
 	chmod ${PERMS:0:1}${PERMS:0:1}${PERMS:2:1} ${F}
 	echo "${PERMS:0:1}${PERMS:1:1}${PERMS:2:1} => ${PERMS:0:1}${PERMS:0:1}${PERMS:2:1} - ${F}"	
 done
